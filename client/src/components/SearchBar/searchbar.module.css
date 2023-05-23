@@ -1,0 +1,41 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .form__input {
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: none;
+    border-bottom: 1px solid white;
+    background: none;
+    height: 30px;
+    width: 400px; /* Aumentar el ancho de la barra de búsqueda */
+    outline: none;
+  }
+  
+  .form__input::placeholder {
+    color: #dadada;
+  }
+  
+  .form__button {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: white;
+    border: none;
+    border-radius: 0.6rem;
+    transition: 0.6s;
+    padding: 0.7rem 1.9rem; /* Aumentar el padding del botón de enviar */
+  }
+  
+  .form__button:hover {
+    cursor: pointer;
+    background-color: #aeaeae;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 0.5rem;
+  }
+  

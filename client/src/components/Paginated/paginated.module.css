@@ -1,0 +1,43 @@
+.paginatedContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .paginatedButtons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .paginatedButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .paginatedButton:hover {
+    background-color: #45a049;
+  }
+  
+  .left {
+    order: -1;
+  }
+  
+  .right {
+    order: 1;
+  }
+  
+  .counter {
+    margin: 0 12px;
+    font-size: 16px;
+    color: #31c536;
+  }
+  
+  /* Agrega estilos adicionales según tus necesidades */
+  

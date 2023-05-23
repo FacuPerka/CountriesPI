@@ -1,0 +1,16 @@
+.home {
+    background-image: url('./assets/green-and-white-background-3840-x-2160-dds1fzx7f10m7hw9.jpg');
+    color: rgb(0, 0, 0);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top:0;
+    left:0;
+    size: contain;
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }

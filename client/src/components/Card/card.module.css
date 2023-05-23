@@ -1,0 +1,42 @@
+.Card_Box {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, .5); /* Ajusta el valor de la opacidad (0.8) según tus preferencias */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 400px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .Card_Box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .Card__Name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333333;
+    margin-top: 1rem;
+  }
+  
+  .Card__Img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .Card__Continent {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #0c5f10;
+    border-radius: 0.6rem;
+    padding: 0.5rem 1rem;
+    margin-top: 1.5rem;
+  }
+  

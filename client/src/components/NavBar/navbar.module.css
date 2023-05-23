@@ -1,0 +1,58 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #4caf50;
+  padding: 0.5rem;
+}
+
+.logoContainer {
+  margin-right: 1rem;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+}
+
+.navbarOptions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbarLink {
+  color: white;
+  font-size: 1rem;
+  background-color: #36df5ad8;
+  border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.6s, color 0.6s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbarLink:hover {
+  background-color: #1a1a1a;
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .navbarOptions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navbarLink {
+    margin-right: 0;
+  }
+}

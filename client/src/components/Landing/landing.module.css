@@ -1,0 +1,62 @@
+.landingPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('./assets/Green-nature-road-wood-fence_1920x1080.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.landing__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing__box {
+  text-align: center;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.landing__title {
+  font-size: 36px;
+  color: #333; /* Cambiar el color del título deseado */
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.landing__title__highlight {
+  color: #00a65a; /* Cambiar el color del resaltado deseado */
+}
+
+.landing__description {
+  font-size: 18px;
+  color: #666; /* Cambiar el color de la descripción deseado */
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.landing__button {
+  padding: 12px 24px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #00a65a; /* Cambiar el color del botón deseado */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.landing__button:hover {
+  background-color: #00804a; /* Cambiar el color del botón al pasar el cursor */
+}
