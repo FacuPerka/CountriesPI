@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import styles from '../Paginated/paginated.module.css';
+import React from "react";
+import styles from "../Paginated/paginated.module.css";
 
-export default function Paginado({ countriesPerPage, countries, paginado }) {
-  const pageNumbers = Array.from({ length: Math.ceil(countries / countriesPerPage) }, (_, index) => index + 1);
-
-  const [currentPage, setCurrentPage] = useState(1);
+export default function Paginado({ countriesPerPage, countries, paginado, currentPage }) {
+  const pageNumbers = Array.from(
+    { length: Math.ceil(countries / countriesPerPage) },
+    (_, index) => index + 1
+  );
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       const prevPage = currentPage - 1;
-      setCurrentPage(prevPage);
       paginado(prevPage);
     }
   };
@@ -17,7 +17,6 @@ export default function Paginado({ countriesPerPage, countries, paginado }) {
   const handleNextPage = () => {
     if (currentPage < pageNumbers.length) {
       const nextPage = currentPage + 1;
-      setCurrentPage(nextPage);
       paginado(nextPage);
     }
   };

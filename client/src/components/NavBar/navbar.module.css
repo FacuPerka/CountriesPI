@@ -39,7 +39,7 @@
   background-color: #1a1a1a;
 }
 
-/* Estilos para pantallas más pequeñas */
+/* Styles for smaller screens */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;

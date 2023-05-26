@@ -49,3 +49,5 @@ export const WINTER = 'Winter'
 export const SPRING = 'Spring'
 
 export const RESET = 'RESET'
+
+export const LOAD_PAGE = 'LOAD_PAGE';

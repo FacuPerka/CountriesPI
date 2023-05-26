@@ -8,6 +8,7 @@ import {
   orderByName,
   orderByPopulation,
   getActivities,
+  searchCountries,
 } from "../../redux/actions/index";
 import {
   LESS_POPULATION,
@@ -30,10 +31,10 @@ export default function Cards() {
   const countries = useSelector((state) => state.countries);
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage] = useState(10);
-  const lastCountry = currentPage * countriesPerPage;
-  const firstCountry = lastCountry - countriesPerPage;
-  const currentCountry = countries.slice(firstCountry, lastCountry);
+  const [currentCountry, setCurrentCountry] = useState([]);
   const [, setOrden] = useState("");
+  const [search, setSearch] = useState("");
+  const [searchError, setSearchError] = useState(false);
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -41,16 +42,27 @@ export default function Cards() {
 
   const reloadCountries = () => {
     dispatch(getCountries());
+    setSearch("");
   };
 
   const handleFilterContinent = (event) => {
     dispatch(filterByContinent(event.target.value));
     setCurrentPage(1);
+    setSearch("");
   };
 
   const handleFilterActivity = (event) => {
-    dispatch(filterByActivity(event.target.value));
+    const selectedActivity = event.target.value;
+    if (selectedActivity === "todos") {
+      dispatch(getCountries()); // Obtener la lista completa de países
+    } else {
+      dispatch(filterByActivity(selectedActivity));
+    }
     setCurrentPage(1);
+    setSearch("");
+    if (currentCountry.length === 0) {
+      window.location.reload();
+    }
   };
 
   const handleSort = (event) => {
@@ -58,6 +70,7 @@ export default function Cards() {
     dispatch(orderByName(event.target.value));
     setCurrentPage(1);
     setOrden(`Ordenado ${event.target.value}`);
+    setSearch("");
   };
 
   const handleSort2 = (event) => {
@@ -65,12 +78,31 @@ export default function Cards() {
     dispatch(orderByPopulation(event.target.value));
     setCurrentPage(1);
     setOrden(`Ordenador ${event.target.value}`);
+    setSearch("");
+  };
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    if (search.trim() === "") {
+      // Mostrar el error si la búsqueda está vacía
+      setSearchError(true);
+    } else {
+      dispatch(searchCountries(search));
+      setCurrentPage(1);
+      setSearchError(false);
+    }
   };
 
   useEffect(() => {
     dispatch(getCountries());
     dispatch(getActivities());
   }, [dispatch]);
+
+  useEffect(() => {
+    const lastCountry = currentPage * countriesPerPage;
+    const firstCountry = lastCountry - countriesPerPage;
+    setCurrentCountry(countries.slice(firstCountry, lastCountry));
+  }, [currentPage, countries, countriesPerPage]);
 
   return (
     <div className={style.cardsContainer}>
@@ -106,10 +138,7 @@ export default function Cards() {
           <option value={LESS_POPULATION}>LOWER POPULATION</option>
         </select>
 
-        <select
-          className={style.filterOption}
-          onChange={handleFilterActivity}
-        >
+        <select className={style.filterOption} onChange={handleFilterActivity}>
           <option value="todos">Activities</option>
           {activities.map((val) => (
             <option key={val.name} value={val.name}>
@@ -118,10 +147,7 @@ export default function Cards() {
           ))}
         </select>
 
-        <select
-          className={style.filterOption}
-          onChange={handleFilterContinent}
-        >
+        <select className={style.filterOption} onChange={handleFilterContinent}>
           <option value={ALL}>All Continents</option>
           <option value={ALL_AFRICA}>Africa</option>
           <option value="Americas">America</option>
@@ -129,8 +155,21 @@ export default function Cards() {
           <option value={ALL_EUROPE}>Europe</option>
           <option value={ALL_OCEANIA}>Oceania</option>
         </select>
-      </div>
 
+        <form className={style.form} onSubmit={handleSearch}>
+          <input
+            className={style.form__input}
+            type="text"
+            placeholder="Search countries..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          {searchError && <p>Error: Please enter a search query.</p>}
+          <button className={style.form__button} type="submit">
+            Search
+          </button>
+        </form>
+      </div>
       <div className={style.cardsBox}>
         {currentCountry?.map((country) => (
           <div className={style.card} key={country.id}>
@@ -151,6 +190,7 @@ export default function Cards() {
         countriesPerPage={countriesPerPage}
         countries={countries.length}
         paginado={paginado}
+        currentPage={currentPage}
       />
     </div>
   );
