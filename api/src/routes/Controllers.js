@@ -78,3 +78,5 @@ const getInfo = async () => {
     getDbInfo,
     getActivities,
     };
+
+    //Guardar datos en arreglo, en vez de hacer peticion, escritura y peticions.

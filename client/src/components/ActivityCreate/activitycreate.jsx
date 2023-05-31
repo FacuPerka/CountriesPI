@@ -18,6 +18,8 @@ function validate(input) {
     errors.difficulty = "You must choose the season";
   } else if (!input.countryId === []) {
     errors.countryId = "You must select a country";
+  } else if (input.happiness > 100){
+    errors.happiness = "Debe ser menor a 100."
   }
   return errors;
 }
@@ -34,6 +36,7 @@ export default function ActivityCreate() {
     difficulty: "",
     season: "",
     countryId: [],
+    happiness: "",
   });
 
   useEffect(() => {
@@ -74,6 +77,7 @@ export default function ActivityCreate() {
       input.duration === "" ||
       input.difficulty === "" ||
       input.season === "" ||
+      input.happiness === "" ||
       input.countryId.length === 0
     )
       return alert("You must complete the fields");
@@ -84,6 +88,7 @@ export default function ActivityCreate() {
       duration: "",
       difficulty: "",
       season: "",
+      happiness: "",
       countryId: [],
     });
     history.push("/home");
@@ -137,6 +142,10 @@ export default function ActivityCreate() {
           {errors.difficulty && (
             <p className={style.error}>{errors.difficulty}</p>
           )}
+          <div>
+            <label> Happiness </label>
+            <input type="number"></input>
+          </div>
           <div className={style.Form__Input}>
             <select
               className={style.Form__Select}
@@ -161,9 +170,11 @@ export default function ActivityCreate() {
               className={style.Form__Select}
               onChange={(e) => handleSelect(e)}
             >
-              <option className={style.op}> Countries </option>
+              <option className={style.op} key="default">
+                Countries
+              </option>
               {countries.map((v) => (
-                <option className={style.op} value={v.id}>
+                <option className={style.op} key={v.id} value={v.id}>
                   {v.name}
                 </option>
               ))}
@@ -172,7 +183,7 @@ export default function ActivityCreate() {
 
           <div>
             {input.countryId.map((country) => (
-              <div>
+              <div key={country}>
                 <input
                   className={style.Form__Button}
                   type="button"
@@ -183,6 +194,7 @@ export default function ActivityCreate() {
               </div>
             ))}
           </div>
+
           <div>
             <button className={style.Form__Button} type="submit">
               Create Activity

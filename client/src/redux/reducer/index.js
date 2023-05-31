@@ -123,3 +123,5 @@ export default function rootReducer(state = initialState, action) {
       return state;
   }
 }
+
+//Usar const si no cambia el valor.

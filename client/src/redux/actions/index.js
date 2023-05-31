@@ -29,7 +29,7 @@ export function getCountries() {
 export function searchCountries(search) {
   return async function (dispatch) {
     try {
-      var encodedSearch = encodeURIComponent(search); // Codificar el valor de búsqueda
+      var encodedSearch = encodeURIComponent(search);
       var json = await axios.get(
         "http://localhost:3001/countries?name=" + encodedSearch
       );
