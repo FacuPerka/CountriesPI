@@ -18,8 +18,6 @@ function validate(input) {
     errors.difficulty = "You must choose the season";
   } else if (!input.countryId === []) {
     errors.countryId = "You must select a country";
-  } else if (input.happiness > 100){
-    errors.happiness = "Debe ser menor a 100."
   }
   return errors;
 }
@@ -36,7 +34,6 @@ export default function ActivityCreate() {
     difficulty: "",
     season: "",
     countryId: [],
-    happiness: "",
   });
 
   useEffect(() => {
@@ -77,7 +74,6 @@ export default function ActivityCreate() {
       input.duration === "" ||
       input.difficulty === "" ||
       input.season === "" ||
-      input.happiness === "" ||
       input.countryId.length === 0
     )
       return alert("You must complete the fields");
@@ -88,7 +84,6 @@ export default function ActivityCreate() {
       duration: "",
       difficulty: "",
       season: "",
-      happiness: "",
       countryId: [],
     });
     history.push("/home");
